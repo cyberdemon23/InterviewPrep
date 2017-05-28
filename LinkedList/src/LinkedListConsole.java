@@ -19,7 +19,7 @@ public class LinkedListConsole
         System.out.println("Please enter a number: ");
         int y = in.nextInt();
 
-        System.out.println(MathFunctions.Sub(x, y));
+        System.out.println(MathFunctions.Div(x, y));
 
 
         //        bTree.Add(i);

@@ -27,4 +27,25 @@ public final class MathFunctions {
 
         return x;
     }
+
+    public static int Mult(int x, int y){
+        int results = 0;
+        while(y > 0){
+            results = Add(results, x);
+            y--;
+        }
+
+        return results;
+    }
+
+    public static int Div(int x, int y){
+        int count = 0;
+
+        while(x > 0){
+            x = Sub(x, y);
+            count++;
+        }
+
+        return count;
+    }
 }
