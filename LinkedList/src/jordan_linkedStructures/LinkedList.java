@@ -11,7 +11,6 @@ public class LinkedList<T> {
 
     public LinkedList(){
         _head = new Node<>();
-        _iterator = _head;
     }
 
     public void AddElement(T element){
@@ -20,7 +19,6 @@ public class LinkedList<T> {
         if(_length == 0){
             _head = newNode;
             _currentPosition = _head;
-            _iterator = _head;
         }
         else{
             _currentPosition.setNext(newNode);
@@ -34,7 +32,6 @@ public class LinkedList<T> {
         if(_length == 0) {
             _head = newNode;
             _currentPosition = _head;
-            _iterator = _head;
         }
         else {
             _currentPosition.setNext(newNode);
@@ -73,6 +70,19 @@ public class LinkedList<T> {
         }
 
         return mBehind.get_value();
+    }
+
+    public T Iterate(){
+        if(_iterator == null) {
+            _iterator = _head;
+            return _iterator.get_value();
+        }
+
+        _iterator = _iterator.getNext();
+        if(_iterator != null)
+            return _iterator.get_value();
+        else
+            return null;
     }
 
     @Override

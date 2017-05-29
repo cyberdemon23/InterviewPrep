@@ -7,19 +7,24 @@ package jordan_linkedStructures;
  */
 public class HashTable<K, V> {
     private int numberOfBuckets = 25;
-    private DoublyLinkedList<KeyValuePair<K, V>>[] _list = new DoublyLinkedList[numberOfBuckets];
+    private Dictionary<K, V>[] _list = new Dictionary[numberOfBuckets];
 
-    public void Add(K key, V value){
+    public void Set(K key, V value){
         int bucket = GetBucket(key);
 
         if(_list[bucket] == null)
-            _list[bucket] = new DoublyLinkedList<>();
+            _list[bucket] = new Dictionary<>();
 
-        KeyValuePair<K, V> kvp = new KeyValuePair<>();
-        kvp.set_key(key);
-        kvp.set_value(value);
+        _list[bucket].Add(key, value);
+    }
 
-        _list[bucket].AddElement(kvp);
+    public V Get(K key){
+        int bucket = GetBucket(key);
+
+        if(_list[bucket] != null)
+            return _list[bucket].Get(key);
+
+        return null;
     }
 
     public boolean Exists(K key){
@@ -28,8 +33,7 @@ public class HashTable<K, V> {
         if(_list[bucket] == null)
             return false;
 
-
-        //while(_list[bucket].Iterate() )
+        return _list[bucket].ContainsKey(key);
     }
 
     private int GetBucket(K key){

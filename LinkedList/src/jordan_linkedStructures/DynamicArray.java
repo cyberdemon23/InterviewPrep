@@ -4,7 +4,7 @@ package jordan_linkedStructures;
  * Created by Jordan on 5/28/2017.
  */
 public class DynamicArray<T> {
-    private Object _array[];
+    protected Object _array[];
 
     public DynamicArray(int arraySize){
         _array = new Object[arraySize];

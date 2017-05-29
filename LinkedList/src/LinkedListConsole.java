@@ -7,22 +7,21 @@ import jordan.math.*;
 import java.util.Random;
 import java.util.Scanner;
 
-public class LinkedListConsole
-{
-    public static void main ( String [] arguments )
-    {
-        DynamicArray<Integer> dArray;
-
-        System.out.println("Please enter a number: ");
-        Scanner in = new Scanner(System.in);
-        Integer i = in.nextInt();
+public class LinkedListConsole {
+    public static void main(String[] arguments) {
+        SortedArray<Integer> array;
         Random rand = new Random();
-        dArray = new DynamicArray<>(5);
+
+        System.out.println("Please enter a string: ");
+        Scanner in = new Scanner(System.in);
+        int i = in.nextInt();
+
+        array = new SortedArray<>(i);
 
         for(int j = 0; j < i; j++){
-            dArray.Add(rand.nextInt(100));
+            array.Add(rand.nextInt(100));
         }
 
-        System.out.println(dArray.toString());
+        System.out.println(array.toString());
     }
 }
