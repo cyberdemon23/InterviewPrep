@@ -6,6 +6,7 @@ package jordan_linkedStructures;
 public class DoublyLinkedList<T> {
     private Node<T> _head;
     private Node<T> _tail;
+    private Node<T> _iterator;
 
     public void AddElement(T element){
         Node<T> newNode = new Node<>();
@@ -47,6 +48,15 @@ public class DoublyLinkedList<T> {
         newNode.setLast(nodeAfter);
         newNode.setNext(oldNextNode);
         oldNextNode.setLast(newNode);
+    }
+
+    public Node<T> Iterate(){
+        if(_iterator == null || _iterator.getNext() == null)
+            _iterator = _head;
+        else
+            _iterator = _iterator.getNext();
+
+        return _iterator;
     }
 
     public Node<T> Find(T value){

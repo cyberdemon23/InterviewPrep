@@ -1,5 +1,7 @@
 package jordan_linkedStructures;
 
+import sun.reflect.generics.tree.Tree;
+
 /**
  * Created by Jordan on 5/26/2017.
  */
@@ -58,6 +60,29 @@ public class BinaryTree<T extends Comparable<T>> {
         }
     }
 
+    public TreeNode<T> Search(T value) {
+        TreeNode<T> results;
+
+        results = Search(_root, value);
+
+        return results;
+    }
+
+    private TreeNode<T> Search(TreeNode<T> node, T value) {
+        //We've hit the end
+        if (node == null)
+            return null;
+
+        int comparison = node.get_value().compareTo(value);
+        if (comparison == 0) {
+            return node;
+        } else if (comparison < 0) {
+            return Search(node.get_rightNode(), value);
+        } else {
+            return Search(node.get_leftNode(), value);
+        }
+    }
+
     public String DepthFirstString() {
         return DepthFirstString(_root);
     }
@@ -90,16 +115,51 @@ public class BinaryTree<T extends Comparable<T>> {
         return results;
     }
 
-    public String BreadthFirstString(TreeNode<T> node){
+    public String PreOrderPrint(){
+        return PreOrderPrint(_root);
+    }
+
+    private String PreOrderPrint(TreeNode<T> node){
         String results = "";
 
         if(node == null)
             return "";
 
         results += node.get_value().toString() + ", ";
-
-
+        results += PreOrderPrint(node.get_leftNode());
+        results += PreOrderPrint(node.get_rightNode());
 
         return results;
+    }
+
+    public String PreOrderPrintNoRecursion(){
+        return PreOrderPrint(_root);
+    }
+
+    public String PreOrderPrintNoRecursion(TreeNode<T> node){
+        String results = "";
+        TreeNode<T> currentNode;
+        Stack<TreeNode<T>> stack = new Stack<>();
+
+        stack.Push(_root);
+
+        while(stack.Size() > 0){
+            currentNode = stack.Pop();
+
+            if(currentNode != null){
+                results = currentNode.get_value().toString() + ", ";
+                stack.Push(currentNode.get_rightNode());
+                stack.Push(currentNode.get_leftNode());
+            }
+        }
+
+       return results;
+    }
+
+    public int GetHeight(TreeNode<T> startingNode) {
+        if (startingNode == null)
+            return 0;
+
+        return 1 + Math.max(GetHeight(startingNode.get_leftNode()), GetHeight(startingNode.get_rightNode()));
     }
 }

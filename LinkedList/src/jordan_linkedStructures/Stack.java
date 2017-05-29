@@ -24,4 +24,22 @@ public class Stack<T> {
 
         return value;
     }
+
+    public T Peek(){
+        T value = _head.get_value();
+
+        return value;
+    }
+
+    public int Size(){
+        int result = 0;
+        Node<T> iterator = _head;
+
+        while(iterator != null){
+            result++;
+            iterator = iterator.getLast();
+        }
+
+        return result;
+    }
 }

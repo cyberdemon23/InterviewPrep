@@ -4,32 +4,25 @@
 import jordan_linkedStructures.*;
 import jordan.math.*;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class LinkedListConsole
 {
     public static void main ( String [] arguments )
     {
-        BinaryTree<Integer> bTree = new BinaryTree<>();
-
+        DynamicArray<Integer> dArray;
 
         System.out.println("Please enter a number: ");
         Scanner in = new Scanner(System.in);
-        int x = in.nextInt();
-        System.out.println("Please enter a number: ");
-        int y = in.nextInt();
+        Integer i = in.nextInt();
+        Random rand = new Random();
+        dArray = new DynamicArray<>(5);
 
-        System.out.println(MathFunctions.Div(x, y));
+        for(int j = 0; j < i; j++){
+            dArray.Add(rand.nextInt(100));
+        }
 
-
-        //        bTree.Add(i);
-//
-//        while(i != -99) {
-//            System.out.println("Please enter a number: ");
-//            i = in.nextInt();
-//            bTree.Add(i);
-//        }
-
-//        System.out.println(bTree.DepthFirstString());
+        System.out.println(dArray.toString());
     }
 }
