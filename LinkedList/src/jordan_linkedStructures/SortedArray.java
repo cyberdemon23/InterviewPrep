@@ -22,13 +22,13 @@ public class SortedArray<T extends Comparable<T>> extends DynamicArray<T> {
         int i = low - 1;
 
         for(int j = low; i < high; j++){
-            if((T)array[j].compareTo((T)pivot) <= 0){
-                i++;
-
-                Object temp = array[i];
-                array[i] = array[j];
-                array[j] = temp;
-            }
+//            if((T)array[j].compareTo((T)pivot) <= 0){
+//                i++;
+//
+//                Object temp = array[i];
+//                array[i] = array[j];
+//                array[j] = temp;
+//            }
         }
 
         Object temp = array[i+1];
