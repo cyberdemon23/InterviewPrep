@@ -74,8 +74,10 @@ public class Graph {
             if (node.value == value)
                 return node;
 
-            for (Integer integer : node.adjacentNodes.keySet()) {
-                queue.enqueue(_graph.get(integer));
+            for (Integer adjacent : node.adjacentNodes.keySet()) {
+                GraphNode nextNodeToVisit = _graph.get(adjacent);
+                if(!nextNodeToVisit.visited)
+                    queue.enqueue(nextNodeToVisit);
             }
         }
 
@@ -93,20 +95,33 @@ public class Graph {
 
         while(queue.getLength() > 0) {
             GraphNode node = queue.dequeue();
-            node.visited = true;
-            path.enqueue(node.value);
+
+            if(!node.visited) {
+                path.enqueue(node.value);
+                node.visited = true;
+            }
 
             if (node.value == nodeB)
                 break;
 
-            for (Integer integer : node.adjacentNodes.keySet()) {
-                queue.enqueue(_graph.get(integer));
+            for (Integer adjacent : node.adjacentNodes.keySet()) {
+                GraphNode nextNodeToVisit = _graph.get(adjacent);
+                if(!nextNodeToVisit.visited)
+                    queue.enqueue(nextNodeToVisit);
             }
         }
 
-        while(queue.getLength() > 0){
-            System.out.print(String.format("%d ", queue.dequeue().value));
-        }
+//        while(path.getLength() > 0){
+//            System.out.print(String.format("%d ", path.dequeue()));
+//        }
+    }
+
+    public boolean pathExists(int nodeA, int nodeB){
+        GraphNode node1 = depthFirstSearch(nodeA);
+        resetVisitedNodes();
+        GraphNode results = depthFirstSearch(nodeB, node1);
+
+        return results != null;
     }
 
     private void resetVisitedNodes(){

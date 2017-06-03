@@ -18,22 +18,26 @@ public class LinkedListConsole {
 //        Scanner in = new Scanner(System.in);
 //        int i = in.nextInt();
 
-        int[] array ={0, 1, 2, 3};
+        int[] array ={0, 1, 2, 3, 4, 5};
 
         HashMap<Integer, int[]> map = new HashMap<>();
-        int[] edgeArray = {1};
+        int[] edgeArray = {1, 2};
         int[] edgeArray1 = {0, 2};
         int[] edgeArray2 = {0, 3};
-        int[] edgeArray3 = {1, 3};
+        int[] edgeArray3 = {1, 3, 4};
+        int[] edgeArray4 = {3};
         map.put(0, edgeArray);
         map.put(1, edgeArray1);
         map.put(2, edgeArray2);
         map.put(3, edgeArray3);
+        map.put(4, edgeArray4);
+        map.put(5, edgeArray);
 
         Graph graph = new Graph(array, map);
         graph.printString();
 
-        graph.findShortestPath(0,3);
+        System.out.println(graph.pathExists(0,3));
+        System.out.println(graph.pathExists(0, 5));
 
 //        GraphNode node = graph.breadthFirstSearch(3);
 //        if(node != null)
