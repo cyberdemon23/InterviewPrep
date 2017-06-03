@@ -1,6 +1,6 @@
 package jordan.structures;
 
-import java.util.LinkedList;
+import java.util.HashMap;
 
 /**
  * Created by Jordan on 6/1/2017.
@@ -8,5 +8,5 @@ import java.util.LinkedList;
 public class GraphNode {
     public int value = 0;
     public boolean visited = false;
-    public LinkedList<GraphNode> adjacents;
+    public HashMap<Integer, Integer> adjacentNodes = new HashMap<>();
 }
