@@ -2,6 +2,9 @@ package jordan_linkedStructures;
 
 import sun.reflect.generics.tree.Tree;
 
+import java.util.*;
+import java.util.LinkedList;
+
 /**
  * Created by Jordan on 5/26/2017.
  */
@@ -161,5 +164,22 @@ public class BinaryTree<T extends Comparable<T>> {
             return 0;
 
         return 1 + Math.max(GetHeight(startingNode.get_leftNode()), GetHeight(startingNode.get_rightNode()));
+    }
+
+    public LinkedList<T> generateLinkedList(){
+        TreeNode<T> iterator = _root;
+        LinkedList<T> results = new LinkedList<>();
+        return generateLinkedList(_root, results);
+    }
+
+    private LinkedList<T> generateLinkedList(TreeNode<T> node, LinkedList<T> results){
+        if(node == null)
+            return null;
+
+        generateLinkedList(node.get_leftNode(), results);
+        results.add(node.get_value());
+        generateLinkedList(node.get_rightNode(), results);
+
+        return results;
     }
 }
