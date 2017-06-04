@@ -2,8 +2,10 @@
  * Created by Jordan on 5/25/2017.
  */
 import jordan.answers.LinkedListFunctions;
+import jordan.answers.SparseSearch;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -13,19 +15,17 @@ public class LinkedListConsole {
 
         System.out.println("Please enter a number: ");
         Scanner in = new Scanner(System.in);
-//        int i = in.nextInt();
-        LinkedList<Integer> list = new LinkedList<>();
-        LinkedList<Integer> list2 = new LinkedList<>();
+        int i = in.nextInt();
+        List<Integer> list = new LinkedList<>();
 
-        list.add(6);
-        list.add(1);
-        list.add(7);
+        for(int k = 0; k< i; k++){
+            list.add(rand.nextInt(101));
+        }
 
-        list2.add(2);
-        list2.add(9);
-        list2.add(5);
+        System.out.println(list);
+        System.out.println(new LinkedListFunctions<Integer>().randomSubset(list));
 
-        System.out.println(new LinkedListFunctions<Integer>().sumLinkedListValues(list, list2));
+
 
     }
 }

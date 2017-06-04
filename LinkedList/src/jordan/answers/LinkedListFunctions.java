@@ -1,9 +1,8 @@
 package jordan.answers;
 
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by jordandukes on 6/4/17.
@@ -35,6 +34,16 @@ public class LinkedListFunctions<T> {
 
     public int sumLinkedListValues(LinkedList<Integer> list1, LinkedList<Integer> list2){
         return getNumber(list1) + getNumber(list2);
+    }
+
+    public List<Integer> randomSubset(List<Integer> list){
+        List<Integer> subset = new LinkedList<>();
+        Random rand = new Random();
+        subset = list.stream().filter(
+                n -> rand.nextBoolean()
+                ).collect(Collectors.toList());
+
+        return subset;
     }
 
     private int getNumber(LinkedList<Integer> list){
