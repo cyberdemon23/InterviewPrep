@@ -11,14 +11,6 @@ public class AnimalQueue {
     private LinkedList<AnimalQueueNode> _dogs = new LinkedList<>();
     private int _animals = 0;
 
-    public void enqueueCat(String name){
-        CatQueueNode newCat = new CatQueueNode();
-        newCat.animalName = name;
-        newCat.dateIn = LocalDateTime.now();
-
-        _cats.add(newCat);
-    }
-
     public void enqueueAnimal(String name, boolean isCat){
         AnimalQueueNode node = new AnimalQueueNode();
         node.animalName = name;
@@ -32,8 +24,29 @@ public class AnimalQueue {
         _animals++;
     }
 
-    public void dequeueAnimal(){
-        
+    public AnimalQueueNode dequeueAnimal(){
+        _animals--;
+        AnimalQueueNode node;
+        if(_cats.peekFirst().dateIn.compareTo(_dogs.peekFirst().dateIn) < 0){
+            node = _cats.getFirst();
+            _cats.removeFirst();
+            return node;
+        }
+        else{
+            node = _dogs.getFirst();
+            _dogs.removeFirst();
+            return node;
+        }
+    }
+
+    public AnimalQueueNode dequeueDog(){
+        _animals--;
+        return _dogs.getFirst();
+    }
+
+    public AnimalQueueNode dequeueCat(){
+        _animals--;
+        return _dogs.getFirst();
     }
 
 }
