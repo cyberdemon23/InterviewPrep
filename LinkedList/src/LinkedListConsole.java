@@ -1,15 +1,9 @@
 /**
  * Created by Jordan on 5/25/2017.
  */
-import jordan.answers.AnimalShelterQueue;
-import jordan.answers.CompressString;
-import jordan.arraygarbage.SortFunctions;
-import jordan.structures.Graph;
-import jordan.structures.GraphNode;
-import jordan.structures.MaxHeap;
-import jordan_linkedStructures.BinaryTree;
+import jordan.answers.LinkedListFunctions;
 
-import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -17,10 +11,21 @@ public class LinkedListConsole {
     public static void main(String[] arguments) {
         Random rand = new Random();
 
-        System.out.println("Please enter a string: ");
+        System.out.println("Please enter a number: ");
         Scanner in = new Scanner(System.in);
-        String s = in.next();
+//        int i = in.nextInt();
+        LinkedList<Integer> list = new LinkedList<>();
+        LinkedList<Integer> list2 = new LinkedList<>();
 
-        System.out.println(CompressString.compress(s));
+        list.add(6);
+        list.add(1);
+        list.add(7);
+
+        list2.add(2);
+        list2.add(9);
+        list2.add(5);
+
+        System.out.println(new LinkedListFunctions<Integer>().sumLinkedListValues(list, list2));
+
     }
 }

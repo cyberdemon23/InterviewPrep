@@ -85,6 +85,29 @@ public class LinkedList<T> {
             return null;
     }
 
+    public void RemoveDuplicates(){
+        Node<T> iterator = _head;
+        Node<T> forwardIterator = iterator;
+        Node<T> previousNode = iterator;
+
+        while(iterator != null){
+            forwardIterator = iterator;
+            previousNode = iterator;
+
+            while(forwardIterator != null){
+                forwardIterator = forwardIterator.getNext();
+
+                if(forwardIterator != null && forwardIterator.get_value() == iterator.get_value())
+                    previousNode.setNext(forwardIterator.getNext());
+
+                if(previousNode != null)
+                    previousNode = previousNode.getNext();
+            }
+
+            iterator = iterator.getNext();
+        }
+    }
+
     @Override
     public String toString() {
         Node<T> iterator = _head;
