@@ -3,6 +3,9 @@
  */
 import jordan.answers.LinkedListFunctions;
 import jordan.answers.SparseSearch;
+import jordan.arraygarbage.SortFunctions;
+import jordan.sorting.MergeSort;
+import jordan.sorting.QuickSort;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -16,14 +19,16 @@ public class LinkedListConsole {
         System.out.println("Please enter a number: ");
         Scanner in = new Scanner(System.in);
         int i = in.nextInt();
-        List<Integer> list = new LinkedList<>();
+        int[] array = new int[i];
 
         for(int k = 0; k< i; k++){
-            list.add(rand.nextInt(101));
+            array[k] = rand.nextInt(101);
         }
 
-        System.out.println(list);
-        System.out.println(new LinkedListFunctions<Integer>().randomSubset(list));
+        SortFunctions.printArray(array);
+        System.out.println("");
+        QuickSort.sort(array);
+        SortFunctions.printArray(array);
 
 
 
